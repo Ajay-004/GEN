@@ -1,0 +1,68 @@
+/* Container for scrollable messages */
+.chat-messages-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between message bubbles */
+}
+
+/* Shared bubble base styles */
+.chat-bubble {
+    display: flex; /* Ensures avatar and text are in line */
+    max-width: 75%; /* Limits bubble width */
+    padding: 12px; /* Inner spacing */
+    border-radius: 18px; /* Key for the rounded bubble shape */
+   /* Gives a subtle "lifted" effect */
+    font-size: 1em;
+    line-height: 1.4;
+}
+
+/* Styles for the actual text/content area within the bubble */
+.chat-text {
+    background: #f5f5f5; /* Default background for content */
+    padding: 10px 14px;
+    border-radius: 12px; /* Rounded corners for the text block itself */
+    word-wrap: break-word; /* Ensures long words wrap */
+}
+
+/* --- Specific Bubble Styles --- */
+
+/* User's message bubble */
+.user-bubble {
+    align-self: flex-end; /* Aligns the entire bubble to the right */
+    flex-direction: row-reverse; /* Reverses order for avatar/content (avatar on right) */
+}
+
+/* Text content inside a user's bubble */
+.user-bubble .chat-text {
+    background-color: #dafbe1; /* Light green for user messages */
+}
+
+/* Bot's message bubble */
+.bot-bubble {
+    align-self: flex-start; /* Aligns the entire bubble to the left */
+}
+
+/* Text content inside a bot's bubble */
+.bot-bubble .chat-text {
+    background-color: #e7f0fd; /* Light blue for bot messages */
+}
+
+/* Specific styling for the initial greeting message bubble (PicoBot's first message) */
+.chat-bubble.initial-greeting {
+    background-color: #E6FFE6; /* A slightly different green for the greeting bubble */
+    color: #333;
+    font-weight: 500;
+    padding: 15px 20px;
+    border-radius: 18px;
+    max-width: 70%;
+    align-self: flex-start;
+    margin-bottom: 20px; /* Space after the greeting */
+}
+
+/* --- Responsive Adjustments (from your original code) --- */
+
+@media (max-width: 768px) {
+    .chat-bubble {
+        max-width: 90%; /* Wider bubbles on smaller screens */
+    }
+}

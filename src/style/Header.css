@@ -1,0 +1,22 @@
+
+.chat-header {
+  background-color: black; /* Chef-like green */
+  color: white;
+  padding: 20px;
+  text-align: center;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header h1 {
+  margin: 0;
+  font-size: 1.8em;
+  font-weight: 500;
+}
+
+.chat-header p {
+  margin-top: 5px;
+  font-size: 0.9em;
+  opacity: 0.8;
+}

@@ -1,0 +1,236 @@
+body {
+  font-family: 'Inter', Arial, sans-serif; /* Using Inter font for consistency with React app */
+  background: linear-gradient(to bottom, #e0ffe0, #c0f0c0); /* Soft green gradient background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Use min-height to ensure it covers viewport even with less content */
+  margin: 0;
+  box-sizing: border-box;
+  flex-direction: column;
+  color: #333; /* Default text color */
+}
+
+/* Navigation bar styling */
+nav {
+    position: fixed;
+    top: 0; /* Align to top */
+    left: 0;
+    width: 100%;
+    height: 70px; /* Slightly adjusted height */
+    display: flex;
+    align-items: center;
+    padding: 0 30px; /* More padding */
+    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* More prominent shadow */
+    z-index: 1000;
+    backdrop-filter: blur(5px); /* Subtle blur effect */
+}
+
+nav img {
+    height: 45px; /* Slightly larger logo */
+    border-radius: 50%; /* Ensure it's round */
+    box-shadow: 0 0 8px rgba(0,0,0,0.1); /* Small shadow for logo */
+}
+
+nav .logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #222; /* Darker color for logo text */
+}
+
+nav h1 {
+    font-size: 38px; /* Larger font size */
+    margin-left: px;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+    font-weight: 700; /* Bolder */
+    letter-spacing: -0.5px; /* Tighter letter spacing */
+}
+
+
+
+/* Authentication Container (for both login and signup forms) */
+.auth-container { 
+  background: #ffffff; /* Pure white background for the form */
+  padding: 35px 45px; /* Increased padding */
+  border-radius: 12px; /* More rounded corners */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* Stronger, softer shadow */
+  width: 100%;
+  max-width: 420px; /* Slightly wider for better balance */
+  box-sizing: border-box;
+  margin-top: 90px; /* Adjusted space for fixed nav */
+  animation: fadeIn 0.8s ease-out forwards; /* Fade in animation */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem; /* More space below heading */
+  color: #222; /* Darker heading color */
+  font-size: 2em; /* Larger heading */
+  font-weight: 600;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  display: block;
+  margin-top: 18px; /* Increased margin */
+  margin-bottom: 0.6rem;
+  font-weight: 600; /* Slightly bolder labels */
+  color: #444; /* Softer label color */
+}
+
+/* Password wrapper for eye icon */
+.password-wrapper {
+  position: relative;
+  margin-bottom: 20px; /* Increased margin */
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  flex: 1;
+  padding-right: 45px; /* More space for the eye icon */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 15px; /* Increased padding */
+  margin-top: 5px;
+  border-radius: 8px; /* More rounded inputs */
+  border: 1px solid #dcdcdc; /* Lighter border */
+  box-sizing: border-box;
+  font-size: 1.05em; /* Slightly larger text in inputs */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fcfcfc; /* Very subtle off-white background */
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  border-color: #28a745; /* Vibrant green focus border */
+  box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.2); /* Soft green glow on focus */
+  outline: none;
+}
+
+button {
+  width: 100%;
+  margin-top: 30px; /* More space above button */
+  background: black; /* Green gradient */
+  color: white;
+  border: none;
+  padding: 14px; /* Increased padding */
+  border-radius: 8px; /* More rounded button */
+  font-size: 1.1em; /* Larger button text */
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+   /* Green shadow */
+}
+
+button:hover {
+  background: white;
+  border: black 2px solid; /* Black border on hover */
+  color: black;/* Darker gradient on hover */
+  transform: translateY(-2px);
+   /* Lift effect */
+  /* Stronger shadow on hover */
+}
+
+button:active {
+  transform: translateY(0); /* Press effect */
+  box-shadow: 0 2px 5px rgba(40, 167, 69, 0.2);
+}
+
+/* Link to signup/login page */
+.auth-link { 
+  text-align: center;
+  margin-top: 25px; /* Increased margin */
+  font-size: 0.95em; /* Slightly larger font */
+  color: #555; /* Softer text color */
+}
+
+.auth-link a {
+  color: black; /* Vibrant green for links */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.auth-link a:hover {
+  color: #1e7e34; /* Darker green on hover */
+  text-decoration: underline;
+  text-decoration: none;
+}
+
+/* Eye icon for password visibility toggle */
+.eye-icon {
+  position: absolute;
+  right: 15px; /* Adjusted position */
+  cursor: pointer;
+  user-select: none;
+  font-size: 1.3em; /* Larger icon */
+  color: #999; /* Softer color */
+  transition: color 0.2s ease;
+}
+
+.eye-icon:hover {
+  color: #555; /* Darker on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    nav {
+        top: 0;
+        height: 60px;
+        padding: 0 15px;
+    }
+    nav img {
+        height: 35px;
+    }
+    nav h1 {
+        font-size: 30px;
+        margin-left: 8px;
+    }
+    .auth-container {
+        padding: 25px 30px;
+        margin-top: 70px;
+        border-radius: 10px;
+    }
+    h2 {
+      font-size: 1.8em;
+      margin-bottom: 1.5rem;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    button {
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 6px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px;
+    }
+    .auth-link {
+      margin-top: 20px;
+      font-size: 0.85em;
+    }
+    .eye-icon {
+      right: 10px;
+      font-size: 1.1em;
+    }
+}

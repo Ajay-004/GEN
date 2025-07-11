@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login - PicoBot</title>
+  <link rel="stylesheet" href="auth.css">
+  <link rel="icon" href="diet.jpg"> <!-- Link to the shared CSS file -->
+</head>
+<body>
+  <nav>
+    <a href="http://localhost:3000" id="chatbotLink" class="logo-link">
+      <img src="diet.jpg" alt="Pico Logo">
+      <h1>PicoBot</h1>
+    </a>
+  </nav>
+  <div class="auth-container">
+    <h2>Login</h2>
+    <form id="loginForm"> <!-- Removed onsubmit attribute as handled by JS -->
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="password">Password</label>
+      <div class="password-wrapper">
+        <input type="password" id="password" name="password" required autocomplete="current-password" />
+        <span id="togglePassword" class="eye-icon">&#128065;</span>
+      </div>
+
+      <button type="submit">Login</button>
+    </form>
+    <div class="auth-link">
+      Don't have an account? <a href="signup.html">Sign Up</a>
+    </div>
+  </div>
+
+  <script>
+    function toggleVisibility(toggleId, inputId) {
+      const toggle = document.getElementById(toggleId);
+      const input = document.getElementById(inputId);
+
+      toggle.addEventListener('click', function () {
+        const isPassword = input.getAttribute('type') === 'password';
+        input.setAttribute('type', isPassword ? 'text' : 'password');
+        this.textContent = isPassword ? '\u{1F576}' : '\u{1F441}'; // 🕶 : 👁
+      });
+    }
+
+    toggleVisibility('togglePassword', 'password');
+
+    // Handle form submission to backend
+    document.getElementById('loginForm').addEventListener('submit', async function(event) {
+      event.preventDefault(); // Prevent default form submission
+
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      // Basic client-side validation
+      if (email === '' || password === '') {
+        alert('Please enter both email and password.');
+        return;
+      }
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+      }
+
+      try {
+        const response = await fetch('http://localhost:5000/api/auth/login', { // Backend login endpoint
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, password }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) { // Check if response status is 2xx
+          alert(data.message + ' Redirecting to PicoBot...');
+          // IMPORTANT: In a real app, you'd store data.userId (or a JWT token) in localStorage/sessionStorage
+          // and use it to authenticate API calls to the chatbot backend.
+          // For this demo, we'll simply redirect.
+          window.location.href = 'http://localhost:3000'; // Redirect to your chatbot project
+        } else {
+          alert('Error: ' + (data.message || 'Something went wrong during login.'));
+        }
+      } catch (error) {
+        console.error('Network error during login:', error);
+        alert('Network error. Please try again later.');
+      }
+    });
+
+    // Redirect logo to chatbot
+    document.getElementById('chatbotLink').addEventListener('click', function(event) {
+      event.preventDefault(); // Prevent default anchor link behavior
+      window.location.href = 'http://localhost:3000'; // Redirect to your chatbot project
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+/* Container for the message input area */
+.message-input-container {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between input, file icon, and send button */
+  padding: 15px 20px; /* Padding around the input area */
+  background-color: #ffffff; /* White background for the input bar */
+  border-top: 1px solid #e0e0e0; /* Subtle line above the input */
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05); /* Soft shadow above the input */
+  z-index: 999; /* Ensure it's above other content */
+  box-sizing: border-box; /* Include padding in width */
+  width: 100%; /* Take full width */
+  max-width: 900px; /* Match the max-width of chat-content-wrapper */
+  margin: 0 auto; /* Center the input bar */
+  border-radius: 0 0 8px 8px; /* Rounded bottom corners */
+  position: relative; /* Changed from fixed, as it's now inside bottom-fixed-elements */
+}
+
+
+.message-input-container textarea {
+  flex: 1; /* Allows textarea to grow and fill available space */
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 25px; /* More rounded input field */
+  font-family: 'Roboto', sans-serif;
+  font-size: 1em;
+  resize: none; /* Disable manual resizing by user */
+  min-height: 45px; /* Minimum height for the textarea */
+  max-height: 120px; /* Max height before scrolling internally */
+  overflow-y: auto; /* Enable internal scrolling for long messages */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.message-input-container textarea:focus {
+  border-color: #007bff; /* Blue border on focus */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Subtle blue glow on focus */
+  outline: none; /* Remove default outline */
+}
+
+/* File input button styling */
+.file-input-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f2f5; /* Light background for the button */
+  color: #555;
+  border: none;
+  border-radius: 50%; /* Circular button */
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.file-input-label:hover {
+  background-color: #e0e0e0; /* Darker on hover */
+  color: #007bff; /* Blue icon on hover */
+}
+
+.file-input-label input[type="file"] {
+  display: none; /* Hide the actual file input */
+}
+
+/* Send button styling */
+.send-button {
+  background-color:black; /* Green send button */
+  color: white;
+  border: none;
+  border-radius: 10px; /* Circular button */
+  width: px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.send-button:hover:not(:disabled) {
+  background-color: #218838; /* Darker green on hover */
+  transform: scale(1.05); /* Slight scale effect */
+}
+
+.send-button:disabled {
+   /* Lighter green when disabled */
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .message-input-container {
+    padding: 10px 15px;
+    gap: 10px;
+    border-radius: 0; /* No rounded corners on mobile */
+  }
+
+  .message-input-container textarea {
+    padding: 10px 12px;
+    font-size: 0.95em;
+    min-height: 40px;
+  }
+
+  .file-input-label,
+  .send-button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1em;
+  }
+}
+.emoji-button-container {
+    position: relative; /* Container for emoji button and picker */
+    flex-shrink: 0;
+}
+
+.emoji-picker {
+    position: absolute;
+    bottom: calc(100% + 10px); /* Position above the input form, with some spacing */
+    right: 0; /* Align to the right of the button */
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30px, 1fr)); /* Responsive grid */
+    gap: 5px;
+    max-height: 250px; /* Limit height for scrolling */
+    overflow-y: auto; /* Enable scrolling for many emojis */
+    z-index: 1002; /* Above input and other elements */
+    width: 280px; /* Fixed width for better layout control */
+}
+
+.emoji-item {
+    font-size: 1.5em; /* Size of individual emojis */
+    cursor: pointer;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.emoji-item:hover {
+    background-color: #f0f0f0;
+}
