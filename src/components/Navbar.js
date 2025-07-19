@@ -93,7 +93,10 @@ function Navbar({
                     onClick={(e) => handleDeleteIconClick(chat.id, e)}
                     title="Delete Chat"
                   >
-                    🗑️ {/* Trash can icon */}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#d11a2a" viewBox="0 0 24 24">
+                        <path d="M9 3v1H4v2h1v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V6h1V4h-5V3H9zm2 2h2v1h-2V5zM7 6h10v14H7V6zm2 2v10h2V8H9zm4 0v10h2V8h-2z"/>
+                    </svg>
+                     {/* Trash can icon */}
                   </span>
                 </a>
               ))
